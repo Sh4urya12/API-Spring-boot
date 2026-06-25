@@ -1,7 +1,7 @@
 package com.example.demo;
 public class Worker {
 
-    private int id;
+    private Integer id;
     private String name;
     private String department;
 
@@ -9,17 +9,17 @@ public class Worker {
 
     }
 
-    public Worker(int id, String name, String department) {
+    public Worker(Integer id, String name, String department) {
         this.id = id;
         this.name = name;
         this.department = department;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

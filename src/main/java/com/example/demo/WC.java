@@ -9,10 +9,10 @@ import java.util.ArrayList;
 public class WC {
     ArrayList<Worker> workers = new ArrayList<>();
     @PostMapping("/workers")
-    public Worker addWorker(@RequestBody Worker w)
+    public Worker addWorker(@RequestBody Worker worker)
     {
-        workers.add(w);
-        return w;
+        workers.add(worker);
+        return worker;
     }
 
     @GetMapping("/workers")
@@ -38,8 +38,12 @@ public class WC {
         {
             if (w.getId() == id)
             {
-                w.setName(updatedWorker.getName());
-                w.setDepartment(updatedWorker.getDepartment());
+                if(updatedWorker.getName()!=null) {
+                    w.setName(updatedWorker.getName());
+                }
+                if(updatedWorker.getDepartment()!=null) {
+                    w.setDepartment(updatedWorker.getDepartment());
+                }
                 return "Worker Updated Successfully";
             }
         }
@@ -49,7 +53,12 @@ public class WC {
     @DeleteMapping("/workers/{id}")
     public String deleteWorker(@PathVariable int id)
     {
-        workers.removeIf(w -> w.getId() == id);
-        return "Worker Deleted Successfully";
+        boolean removed = workers.removeIf(w -> w.getId() == id);
+
+        if(removed) {
+            return "Worker Deleted Successfully";
+        }
+
+        return "Worker Not Found";
     }
 }
