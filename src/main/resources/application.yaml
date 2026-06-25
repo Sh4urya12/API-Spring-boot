@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: student-db
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/studentdb
+    username: root
+    password: Tanmayss123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
